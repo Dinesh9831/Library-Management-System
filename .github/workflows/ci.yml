@@ -1,0 +1,35 @@
+name: Library System CI/CD Pipeline
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build-and-test:
+    name: Build, Test & Containerize
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out code from GitHub repository
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      # Step 2: Configure JDK 17
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: 'maven' # Automatically caches Maven dependencies!
+
+      # Step 3: Run Unit/Integration Tests and Package JAR
+      - name: Maven Build and Test
+        run: mvn -B clean package
+
+      # Step 4: Verify multi-stage Docker build is fully operational
+      - name: Build Docker Container Image
+        run: |
+          docker build -t library-management-system:latest .
+          docker images # List local images to verify build success

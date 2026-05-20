@@ -1,0 +1,27 @@
+# Git
+.git
+.github
+.gitignore
+
+# Maven build artifacts
+target/
+*.jar
+*.war
+
+# IDE files
+.idea/
+.vscode/
+*.iml
+*.project
+*.classpath
+*.settings/
+
+# OS/System files
+.DS_Store
+Thumbs.db
+
+# Documentation
+README.md
+implementation_plan.md
+task.md
+walkthrough.md

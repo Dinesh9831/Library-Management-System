@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bibliotheca - Premium Library Portal</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="glass-bg"></div>
+
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fa-solid fa-book-open-reader logo-icon"></i>
+                <span class="logo-text">Bibliotheca</span>
+            </div>
+            <nav class="nav-menu">
+                <button class="nav-item active" id="btn-dashboard">
+                    <i class="fa-solid fa-chart-pie"></i> Dashboard
+                </button>
+                <button class="nav-item" id="btn-catalog">
+                    <i class="fa-solid fa-book"></i> Catalog
+                </button>
+                <button class="nav-item" id="btn-add">
+                    <i class="fa-solid fa-circle-plus"></i> Add Book
+                </button>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="tech-stack">
+                    <span class="badge maven"><i class="fa-solid fa-feather"></i> Maven</span>
+                    <span class="badge docker"><i class="fa-brands fa-docker"></i> Docker</span>
+                    <span class="badge actions"><i class="fa-brands fa-github"></i> CI/CD</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Top bar -->
+            <header class="top-bar">
+                <div class="welcome">
+                    <h1>Library Management System</h1>
+                    <p>Standard Maven + Docker + GitHub Actions Demonstration</p>
+                </div>
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="search-input" placeholder="Search by title, author, or ISBN...">
+                </div>
+            </header>
+
+            <!-- Dashboard View -->
+            <section class="view-section active" id="view-dashboard">
+                <!-- Stats Section -->
+                <div class="stats-grid">
+                    <div class="stat-card total">
+                        <div class="stat-info">
+                            <h3>Total Catalog</h3>
+                            <span class="stat-number" id="stat-total">0</span>
+                        </div>
+                        <div class="stat-icon-wrapper">
+                            <i class="fa-solid fa-book-bookmark"></i>
+                        </div>
+                    </div>
+                    <div class="stat-card borrowed">
+                        <div class="stat-info">
+                            <h3>Borrowed</h3>
+                            <span class="stat-number" id="stat-borrowed">0</span>
+                        </div>
+                        <div class="stat-icon-wrapper">
+                            <i class="fa-solid fa-hand-holding-hand"></i>
+                        </div>
+                    </div>
+                    <div class="stat-card available">
+                        <div class="stat-info">
+                            <h3>Available</h3>
+                            <span class="stat-number" id="stat-available">0</span>
+                        </div>
+                        <div class="stat-icon-wrapper">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activities / Quick Actions -->
+                <div class="dashboard-details">
+                    <div class="content-panel">
+                        <div class="panel-header">
+                            <h2>Featured Catalog</h2>
+                            <button class="btn btn-secondary" onclick="document.getElementById('btn-catalog').click()">View All</button>
+                        </div>
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Book Details</th>
+                                        <th>ISBN</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="featured-books-table">
+                                    <!-- Dynamic rows loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Catalog View -->
+            <section class="view-section" id="view-catalog">
+                <div class="content-panel">
+                    <div class="panel-header">
+                        <h2>Complete Library Catalog</h2>
+                    </div>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Book Details</th>
+                                    <th>ISBN</th>
+                                    <th>Borrower</th>
+                                    <th>Due Date</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="all-books-table">
+                                <!-- Dynamic rows loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Add Book View -->
+            <section class="view-section" id="view-add">
+                <div class="form-panel-wrapper">
+                    <div class="content-panel form-panel">
+                        <h2>Add a New Book</h2>
+                        <p class="panel-subtitle">Create a new entry in the library inventory repository</p>
+                        <form id="add-book-form">
+                            <div class="form-group">
+                                <label for="book-title">Book Title</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-solid fa-heading input-icon"></i>
+                                    <input type="text" id="book-title" placeholder="e.g. Clean Architecture" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="book-author">Author</label>
+                                <div class="input-wrapper">
+                                    <i class="fa-solid fa-user-pen input-icon"></i>
+                                    <input type="text" id="book-author" placeholder="e.g. Robert C. Martin" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="book-isbn">ISBN Number</label>
+                                <div class="input-wrapper-split">
+                                    <div class="input-wrapper" style="flex-grow: 1;">
+                                        <i class="fa-solid fa-barcode input-icon"></i>
+                                        <input type="text" id="book-isbn" placeholder="e.g. 978-0134494166" required>
+                                    </div>
+                                    <button type="button" class="btn btn-secondary" id="btn-generate-isbn" title="Generate Random ISBN">
+                                        <i class="fa-solid fa-wand-magic-sparkles"></i> Auto-Gen
+                                    </button>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">
+                                <i class="fa-solid fa-plus"></i> Register Book
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Borrow Dialog Modal -->
+    <div class="modal" id="borrow-modal">
+        <div class="modal-content glass-panel">
+            <div class="modal-header">
+                <h2>Borrow Book</h2>
+                <button class="close-modal-btn" id="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>You are requesting to borrow: <strong id="modal-book-title">Book Title</strong></p>
+                <form id="borrow-form">
+                    <input type="hidden" id="modal-book-id">
+                    <div class="form-group">
+                        <label for="borrower-name">Borrower Name (Student/Staff)</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-user input-icon"></i>
+                            <input type="text" id="borrower-name" placeholder="Enter full name" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Confirm Borrowing</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications Container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- Application Controller Logic -->
+    <script src="app.js"></script>
+</body>
+</html>
