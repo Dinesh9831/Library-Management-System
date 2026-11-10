@@ -43,7 +43,7 @@ mvn spring-boot:run
 ```
 
 Once started, open your browser and navigate to:
-👉 **[http://localhost:8080](http://localhost:8080)**
+👉 **[http://localhost:8080](http://localhost:8081)**
 
 ---
 
