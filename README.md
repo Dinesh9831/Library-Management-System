@@ -67,7 +67,7 @@ docker ps
 docker logs -f library-app
 ```
 
-Navigate to **[http://localhost:8080](http://localhost:8080)** to interact with your secure, containerized library instance.
+Navigate to **[http://localhost:8080](http://localhost:8081)** to interact with your secure, containerized library instance.
 
 #### Stop the Container:
 ```bash
