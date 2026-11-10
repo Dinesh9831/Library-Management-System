@@ -1,4 +1,4 @@
-# Bibliotheca - Library Management System
+# Readsphere - Library Management System
 
 A premium, responsive, and lightweight **Library Management System** web application designed to demonstrate robust build pipelines with **Maven**, containerization using **Docker**, and continuous integration through **GitHub Actions**.
 
